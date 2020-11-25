@@ -38,6 +38,7 @@ export const parserOptions: ParserOptions = {
 
   // https://html.spec.whatwg.org/multipage/parsing.html#tree-construction-dispatcher
   getNamespace(tag: string, parent: ElementNode | undefined): DOMNamespaces {
+    debugger
     let ns = parent ? parent.ns : DOMNamespaces.HTML
 
     if (parent && ns === DOMNamespaces.MATH_ML) {

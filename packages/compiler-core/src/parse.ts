@@ -78,6 +78,7 @@ export function baseParse(
   content: string,
   options: ParserOptions = {}
 ): RootNode {
+  debugger
   const context = createParserContext(content, options)
   const start = getCursor(context)
   return createRoot(
@@ -112,6 +113,7 @@ function parseChildren(
   mode: TextModes,
   ancestors: ElementNode[]
 ): TemplateChildNode[] {
+  debugger
   const parent = last(ancestors)
   const ns = parent ? parent.ns : Namespaces.HTML
   const nodes: TemplateChildNode[] = []
@@ -294,7 +296,7 @@ function parseCDATA(
 
 function parseComment(context: ParserContext): CommentNode {
   __TEST__ && assert(startsWith(context.source, '<!--'))
-
+  debugger
   const start = getCursor(context)
   let content: string
 
@@ -362,7 +364,7 @@ function parseElement(
   ancestors: ElementNode[]
 ): ElementNode | undefined {
   __TEST__ && assert(/^<[a-z]/i.test(context.source))
-
+  debugger
   // Start tag.
   const wasInPre = context.inPre
   const wasInVPre = context.inVPre
@@ -429,7 +431,7 @@ function parseTag(
     assert(
       type === (startsWith(context.source, '</') ? TagType.End : TagType.Start)
     )
-
+  debugger
   // Tag open.
   const start = getCursor(context)
   const match = /^<\/?([a-z][^\t\r\n\f />]*)/i.exec(context.source)!
@@ -755,6 +757,7 @@ function parseInterpolation(
 ): InterpolationNode | undefined {
   const [open, close] = context.options.delimiters
   __TEST__ && assert(startsWith(context.source, open))
+  debugger
 
   const closeIndex = context.source.indexOf(close, open.length)
   if (closeIndex === -1) {
@@ -795,7 +798,7 @@ function parseInterpolation(
 
 function parseText(context: ParserContext, mode: TextModes): TextNode {
   __TEST__ && assert(context.source.length > 0)
-
+  debugger
   const endTokens = ['<', context.options.delimiters[0]]
   if (mode === TextModes.CDATA) {
     endTokens.push(']]>')

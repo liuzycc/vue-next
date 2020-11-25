@@ -226,6 +226,7 @@ export function createAppAPI<HostElement>(
 
       mount(rootContainer: HostElement, isHydrate?: boolean): any {
         if (!isMounted) {
+          debugger
           const vnode = createVNode(
             rootComponent as ConcreteComponent,
             rootProps
