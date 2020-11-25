@@ -562,7 +562,7 @@ function parseAttribute(
   nameSet: Set<string>
 ): AttributeNode | DirectiveNode {
   __TEST__ && assert(/^[^\t\r\n\f />]/.test(context.source))
-
+  debugger
   // Name.
   const start = getCursor(context)
   const match = /^[^\t\r\n\f />][^\t\r\n\f />=]*/.exec(context.source)!
@@ -878,6 +878,7 @@ function startsWith(source: string, searchString: string): boolean {
 
 function advanceBy(context: ParserContext, numberOfCharacters: number): void {
   const { source } = context
+  debugger
   __TEST__ && assert(numberOfCharacters <= source.length)
   advancePositionWithMutation(context, source, numberOfCharacters)
   context.source = source.slice(numberOfCharacters)
